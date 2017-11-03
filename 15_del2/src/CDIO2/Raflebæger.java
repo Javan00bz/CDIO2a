@@ -1,28 +1,29 @@
 package CDIO2;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Raflebæger {
-	
-	static List<Integer> resultatListe = new ArrayList<Integer>();
-	public static List<Integer> rollCup(int n) {
-		for (int i = 1; i <= n; i++) {
-			int Resultat = (Terning.rulTerning());
-			resultatListe.add(Resultat);
+	private Terning[] terninger;
+
+	public Raflebæger(int i) {
+		terninger = new Terning[i];
+		for (int j=0; j<i; j++) {
+			terninger[j] = new Terning(6);
 		}
-		System.out.println(resultatListe);
-		return resultatListe;
+
+	}
+
+	public void rollCup() {
+		for (int i = 0; i < terninger.length; i++) {
+			terninger[i].rulTerning();
 		}
-	
-	public static int getSum() {
-		int sum = 0;
-		for (int k = 0; k < resultatListe.size(); k++)
-			sum += resultatListe.get(k);
-		System.out.println(sum);
+	}
+
+	public int getSum() {
+		int sum=0;
+		for (int i = 0; i < terninger.length; i++) {
+			sum+=terninger[i].getAntalØjne();
+		}
 		return sum;
 	}
-	
+
 
 }
