@@ -17,6 +17,16 @@ public class Raflebæger {
 		}
 	}
 
+	
+	
+	public Terning[] getTerninger() {
+		return terninger;
+	}
+
+	public void setTerninger(Terning[] terninger) {
+		this.terninger = terninger;
+	}
+
 	public int getSum() {
 		int sum=0;
 		for (int i = 0; i < terninger.length; i++) {
