@@ -6,8 +6,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestSpiller {
+import CDIO2.Konto;
+import CDIO2.Spiller;
 
+public class TestSpiller {
+	Konto konto1 = new Konto(1000);
+	Spiller spiller1= new Spiller("hej", 0, konto1);
+	
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -18,22 +23,25 @@ public class TestSpiller {
 
 	@Test
 	public void testGetNavn() {
-		fail("Not yet implemented");
+		spiller1.getNavn().equals("hej");
 	}
 
 	@Test
 	public void testSetNavn() {
-		fail("Not yet implemented");
+		spiller1.setNavn("test");
+		spiller1.getNavn().equals("test");
+		
 	}
 
 	@Test
 	public void testGetPosition() {
-		fail("Not yet implemented");
+		assertEquals(0, spiller1.getPosition());
 	}
 
 	@Test
 	public void testSetPosition() {
-		fail("Not yet implemented");
+		spiller1.setPosition(6);
+		assertEquals(6, spiller1.getPosition());
 	}
 
 }
