@@ -25,10 +25,12 @@ public class Spil {
 		Raflebæger cup = new Raflebæger(2);
 		String besked = null;
 		boolean winner = false;
-
+		boolean yourturn = true;
+	
 		while(!winner) {
-
-			while(true) {
+			
+			yourturn = true;
+			while(yourturn == true) {
 				GUI.getUserButtonPressed(besked, Spiller1.getNavn() + ", det er din tur, tryk her for at slå med terningerne.");
 				cup.rulRaflebæger();
 				GUI.setDice(cup.getTerninger()[0].getAntalØjne(), cup.getTerninger()[1].getAntalØjne());
@@ -71,11 +73,18 @@ public class Spil {
 				break;
 				default: besked = "der er noget galt";
 				}
-
+				
+					
+				
 				GUI.setBalance(Spiller1.getNavn(), Konto1.getVærdi());
 				GUI.showMessage(besked);
+				
+				if (Spiller1.getPosition() == 9)
+					yourturn = true;
+				else yourturn = false;
 			}
-			while(Spiller2.getPosition()+1 == 10) {
+			yourturn = true;
+			while(yourturn == true) {
 				GUI.getUserButtonPressed(besked, Spiller2.getNavn() + ", det er din tur, tryk her for at slå med terningerne.");
 				cup.rulRaflebæger();
 				GUI.setDice(cup.getTerninger()[0].getAntalØjne(), cup.getTerninger()[1].getAntalØjne());
@@ -84,44 +93,47 @@ public class Spil {
 
 				switch (Spiller2.getPosition()) {
 				case 1: Konto2.tilføjVærdi(250);
-				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
+				besked = hentFeltBeskrivelse(Spiller2.getPosition()-1);
 				break;
 				case 2: Konto2.hævVærdi(100);
-				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
+				besked = hentFeltBeskrivelse(Spiller2.getPosition()-1);
 				break;
 				case 3: Konto2.tilføjVærdi(100);
-				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
+				besked = hentFeltBeskrivelse(Spiller2.getPosition()-1);
 				break;
 				case 4: Konto2.hævVærdi(20);
-				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
+				besked = hentFeltBeskrivelse(Spiller2.getPosition()-1);
 				break;
 				case 5: Konto2.tilføjVærdi(180);
-				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
+				besked = hentFeltBeskrivelse(Spiller2.getPosition()-1);
 				break;
 				case 6: Konto2.tilføjVærdi(0);
-				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
+				besked = hentFeltBeskrivelse(Spiller2.getPosition()-1);
 				break;
 				case 7: Konto2.hævVærdi(70);
-				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
+				besked = hentFeltBeskrivelse(Spiller2.getPosition()-1);
 				break;
 				case 8: Konto2.tilføjVærdi(60);
-				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
+				besked = hentFeltBeskrivelse(Spiller2.getPosition()-1);
 				break;
 				case 9: Konto2.hævVærdi(80);
-				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
+				besked = hentFeltBeskrivelse(Spiller2.getPosition()-1);
 				break;
 				case 10: Konto2.hævVærdi(50);
-				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
+				besked = hentFeltBeskrivelse(Spiller2.getPosition()-1);
 				break;
 				case 11: Konto2.tilføjVærdi(650);
-				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
+				besked = hentFeltBeskrivelse(Spiller2.getPosition()-1);
 				break;
 				default: besked = "der er noget galt";
 				}
 
 				GUI.setBalance(Spiller2.getNavn(), Konto2.getVærdi());
 				GUI.showMessage(besked);
-
+				
+				if (Spiller2.getPosition() == 9)
+					yourturn = true;
+				else yourturn = false;
 
 			}
 		}
