@@ -28,7 +28,7 @@ public class Spil {
 
 		while(!winner) {
 
-			while(Spiller1.getPosition()+1 == 10) {
+			while(true) {
 				GUI.getUserButtonPressed(besked, Spiller1.getNavn() + ", det er din tur, tryk her for at slå med terningerne.");
 				cup.rulRaflebæger();
 				GUI.setDice(cup.getTerninger()[0].getAntalØjne(), cup.getTerninger()[1].getAntalØjne());
