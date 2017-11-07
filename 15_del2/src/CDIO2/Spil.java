@@ -138,7 +138,7 @@ public class Spil {
 
 				GUI.setBalance(Spiller2.getNavn(), Konto2.getVærdi());
 				
-				if (Konto1.getVærdi() >= 3000)
+				if (Konto2.getVærdi() >= 3000)
 					winner = true;
 				if (Spiller2.getPosition() == 9)
 					yourturn = true;
