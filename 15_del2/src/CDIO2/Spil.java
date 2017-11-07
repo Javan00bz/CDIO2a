@@ -14,8 +14,9 @@ public class Spil {
 	}
 
 	private void spilSpil() {
-		initializeGUI();
+		initializeGUI(); //initialiserer GUI
 		GUI.showMessage(StandardBeskeder (0));
+		//Opretter spillere, konti og raflebæger
 		Konto Konto1 = new Konto(1000);
 		Konto Konto2 = new Konto(1000);
 		Spiller Spiller1 = new Spiller(GUI.getUserString(StandardBeskeder (1)), 6, Konto1 );
@@ -33,6 +34,7 @@ public class Spil {
 		boolean winner = false;
 		boolean yourturn = true;
 	
+		//hele spillets loop
 		while(!winner) {
 			
 			yourturn = true;
@@ -43,7 +45,8 @@ public class Spil {
 				Spiller1.setPosition(cup.getSum() - 1);
 				GUI.removeAllCars(Spiller1.getNavn());
 				GUI.setCar(Spiller1.getPosition(), Spiller1.getNavn());
-
+				
+				//Finder ud af hvor mange point spilleren skal givet eller fratages.
 				switch (Spiller1.getPosition()) {
 				case 1: Konto1.tilføjVærdi(250);
 				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
@@ -82,7 +85,7 @@ public class Spil {
 				}
 				
 					
-				
+				// Sætter spillerens balance of finder ud af om spilleren har vundet og finder ud af om spilleren på slå igen.
 				GUI.setBalance(Spiller1.getNavn(), Konto1.getVærdi());
 				if (Konto1.getVærdi() >= 3000)
 					winner = true;
@@ -152,7 +155,6 @@ public class Spil {
 		}
 
 		private void initializeGUI() {
-			// TODO Create Fields
 			Field [] fields = new Field[40];
 			// Navngiv felter der skal bruges
 			for (int i = 0; i < Oversæt.file1().size(); i++) {
@@ -168,7 +170,6 @@ public class Spil {
 
 			GUI.create(fields);
 
-			//TODO send Fields to GUI
 
 		}
 

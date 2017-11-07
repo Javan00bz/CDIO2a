@@ -26,7 +26,10 @@ public class Konto {
 	}
 	
 	public int hævVærdi(int fradrag)
-	{
-		return værdi = værdi - fradrag;
+	{	
+		værdi = værdi - fradrag;
+		if (værdi < 0)
+			værdi = 0;
+		return værdi;
 	}
 }
