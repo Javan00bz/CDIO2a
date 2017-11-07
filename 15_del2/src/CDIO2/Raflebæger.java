@@ -11,7 +11,7 @@ public class Raflebæger {
 
 	}
 
-	public void rollCup() {
+	public void rulRaflebæger() {
 		for (int i = 0; i < terninger.length; i++) {
 			terninger[i].rulTerning();
 		}
