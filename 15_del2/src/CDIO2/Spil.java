@@ -19,7 +19,13 @@ public class Spil {
 		Konto Konto1 = new Konto(1000);
 		Konto Konto2 = new Konto(1000);
 		Spiller Spiller1 = new Spiller(GUI.getUserString("Spiller 1, indtast dit navn"), 6, Konto1 );
-		Spiller Spiller2 = new Spiller(GUI.getUserString("Spiller 2, indtast dit navn"), 6, Konto2 );
+		String Spiller2Navn = GUI.getUserString("Spiller 2, indtast dit navn");
+		while (Spiller2Navn.equals(Spiller1.getNavn())) {
+			GUI.showMessage("The Names Cant Be The Same. \nPlease Try Again ");
+			Spiller2Navn = GUI.getUserString("Player 2: Enter Your Name");
+		}
+		
+		Spiller Spiller2 = new Spiller(Spiller2Navn, 6, Konto2 );
 		GUI.addPlayer(Spiller1.getNavn(), Konto1.getVærdi());
 		GUI.addPlayer(Spiller2.getNavn(), Konto2.getVærdi());
 		Raflebæger cup = new Raflebæger(2);
@@ -30,7 +36,7 @@ public class Spil {
 		while(!winner) {
 			
 			yourturn = true;
-			while(yourturn == true) {
+			while(yourturn == true && winner == false) {
 				GUI.getUserButtonPressed(besked, Spiller1.getNavn() + ", det er din tur, tryk her for at slå med terningerne.");
 				cup.rulRaflebæger();
 				GUI.setDice(cup.getTerninger()[0].getAntalØjne(), cup.getTerninger()[1].getAntalØjne());
@@ -78,14 +84,14 @@ public class Spil {
 					
 				
 				GUI.setBalance(Spiller1.getNavn(), Konto1.getVærdi());
-				GUI.showMessage(besked);
-				
+				if (Konto1.getVærdi() >= 3000)
+					winner = true;
 				if (Spiller1.getPosition() == 9)
 					yourturn = true;
 				else yourturn = false;
 			}
 			yourturn = true;
-			while(yourturn == true) {
+			while(yourturn == true && winner == false ) {
 				GUI.getUserButtonPressed(besked, Spiller2.getNavn() + ", det er din tur, tryk her for at slå med terningerne.");
 				cup.rulRaflebæger();
 				GUI.setDice(cup.getTerninger()[0].getAntalØjne(), cup.getTerninger()[1].getAntalØjne());
@@ -131,15 +137,18 @@ public class Spil {
 				}
 
 				GUI.setBalance(Spiller2.getNavn(), Konto2.getVærdi());
-				GUI.showMessage(besked);
 				
+				if (Konto1.getVærdi() >= 3000)
+					winner = true;
 				if (Spiller2.getPosition() == 9)
 					yourturn = true;
 				else yourturn = false;
 
 			}
 		}
-
+		if (Konto1.getVærdi() > Konto2.getVærdi())
+			GUI.showMessage(Spiller1.getNavn() + " Du har vundet jaa");
+		else GUI.showMessage(Spiller2.getNavn() + " Du har vundet jaa");
 		}
 
 		private void initializeGUI() {
