@@ -2,22 +2,22 @@ package CDIO2;
 
 public class Terning {
 		 
-		static int antalØjne;
+		private int antalØjne;
 		
 		public Terning(int øjne) {
 			øjne = antalØjne;
 		}
 		
-		public static int rulTerning() {
+		public int rulTerning() {
 			antalØjne = (int)(Math.random()*6+1);
 			return antalØjne;
 		}
 		
-		public static int getAntalØjne() {
+		public int getAntalØjne() {
 			return antalØjne;
 		}
 		
-		public static void setAntalØjne(int nytAntalØjne) {
+		public void setAntalØjne(int nytAntalØjne) {
 			antalØjne = nytAntalØjne;
 	}
 }
