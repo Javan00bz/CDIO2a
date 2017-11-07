@@ -7,13 +7,13 @@ import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 
-public class spilSpil {
+public class Spil {
 	
 	public static void main (String[] args) {
-		new spilSpil().spil();		
+		new Spil().spilSpil();		
 	}
 
-	private void spil() {
+	private void spilSpil() {
 		initializeGUI();
 		GUI.showMessage("velkommen");
 		boolean winner = false;
