@@ -27,9 +27,10 @@ public class spilSpil {
 			Spiller Spiller2 = new Spiller(player2Name, 6, Konto2 );
 			
 			GUI.addPlayer(Spiller1.getNavn(), Konto1.getVærdi());
-			GUI.setCar(Spiller1.getPosition(), Spiller1.getNavn());
+			
 			
 			GUI.setCar(Spiller2.getPosition(), Spiller1.getNavn());
+			GUI.setCar(Spiller1.getPosition(), Spiller1.getNavn());
 			GUI.addPlayer(Spiller2.getNavn(), Konto2.getVærdi());			
 		}
 		
