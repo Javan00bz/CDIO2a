@@ -15,14 +15,14 @@ public class Spil {
 
 	private void spilSpil() {
 		initializeGUI();
-		GUI.showMessage("velkommen");
+		GUI.showMessage(StandardBeskeder (0));
 		Konto Konto1 = new Konto(1000);
 		Konto Konto2 = new Konto(1000);
-		Spiller Spiller1 = new Spiller(GUI.getUserString("Spiller 1, indtast dit navn"), 6, Konto1 );
-		String Spiller2Navn = GUI.getUserString("Spiller 2, indtast dit navn");
+		Spiller Spiller1 = new Spiller(GUI.getUserString(StandardBeskeder (1)), 6, Konto1 );
+		String Spiller2Navn = GUI.getUserString(StandardBeskeder (3));
 		while (Spiller2Navn.equals(Spiller1.getNavn())) {
-			GUI.showMessage("The Names Cant Be The Same. \nPlease Try Again ");
-			Spiller2Navn = GUI.getUserString("Player 2: Enter Your Name");
+			GUI.showMessage(StandardBeskeder (2));
+			Spiller2Navn = GUI.getUserString(StandardBeskeder (4));
 		}
 		
 		Spiller Spiller2 = new Spiller(Spiller2Navn, 6, Konto2 );
@@ -37,7 +37,7 @@ public class Spil {
 			
 			yourturn = true;
 			while(yourturn == true && winner == false) {
-				GUI.getUserButtonPressed(besked, Spiller1.getNavn() + ", det er din tur, tryk her for at slå med terningerne.");
+				GUI.getUserButtonPressed(besked, Spiller1.getNavn() + StandardBeskeder(5));
 				cup.rulRaflebæger();
 				GUI.setDice(cup.getTerninger()[0].getAntalØjne(), cup.getTerninger()[1].getAntalØjne());
 				Spiller1.setPosition(cup.getSum() - 1);
@@ -78,7 +78,7 @@ public class Spil {
 				case 11: Konto1.tilføjVærdi(650);
 				besked = hentFeltBeskrivelse(Spiller1.getPosition()-1);
 				break;
-				default: besked = "der er noget galt";
+				default: besked = StandardBeskeder (6);
 				}
 				
 					
@@ -92,7 +92,7 @@ public class Spil {
 			}
 			yourturn = true;
 			while(yourturn == true && winner == false ) {
-				GUI.getUserButtonPressed(besked, Spiller2.getNavn() + ", det er din tur, tryk her for at slå med terningerne.");
+				GUI.getUserButtonPressed(besked, Spiller2.getNavn() + StandardBeskeder(5));
 				cup.rulRaflebæger();
 				GUI.setDice(cup.getTerninger()[0].getAntalØjne(), cup.getTerninger()[1].getAntalØjne());
 				Spiller2.setPosition(cup.getSum() - 1);
@@ -133,7 +133,7 @@ public class Spil {
 				case 11: Konto2.tilføjVærdi(650);
 				besked = hentFeltBeskrivelse(Spiller2.getPosition()-1);
 				break;
-				default: besked = "der er noget galt";
+				default: besked = StandardBeskeder (6);
 				}
 
 				GUI.setBalance(Spiller2.getNavn(), Konto2.getVærdi());
@@ -147,8 +147,8 @@ public class Spil {
 			}
 		}
 		if (Konto1.getVærdi() > Konto2.getVærdi())
-			GUI.showMessage(Spiller1.getNavn() + " Du har vundet jaa");
-		else GUI.showMessage(Spiller2.getNavn() + " Du har vundet jaa");
+			GUI.showMessage(Spiller1.getNavn() +  StandardBeskeder(7));
+		else GUI.showMessage(Spiller2.getNavn() + StandardBeskeder(7));
 		}
 
 		private void initializeGUI() {
@@ -201,4 +201,14 @@ public class Spil {
 			li3 = lines3.toArray(li3);
 			return li3[i];
 		}
+		
+		public static String StandardBeskeder(int i){
+
+			ArrayList<String> lines3 = new ArrayList<String>();
+			lines3 = Oversæt.file4();
+			String[] li3 = new String[lines3.size()];
+			li3 = lines3.toArray(li3);
+			return li3[i];
+		}
+		
 	}
