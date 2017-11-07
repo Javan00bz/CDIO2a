@@ -19,8 +19,18 @@ public class spilSpil {
 		boolean winner = false;
 		
 		while(!winner) {
-			//TODO gameLoop;
+			Konto Konto1 = new Konto(1000);
+			Konto Konto2 = new Konto(1000);
+			String player1Name = GUI.getUserString("Spiller 1, indtast dit navn");
+			String player2Name = GUI.getUserString("Spiller 2, indtast dit navn");
+			Spiller Spiller1 = new Spiller(player1Name, 6, Konto1 );
+			Spiller Spiller2 = new Spiller(player2Name, 6, Konto2 );
 			
+			GUI.addPlayer(Spiller1.getNavn(), Konto1.getVærdi());
+			GUI.setCar(Spiller1.getPosition(), Spiller1.getNavn());
+			
+			GUI.setCar(Spiller2.getPosition(), Spiller1.getNavn());
+			GUI.addPlayer(Spiller2.getNavn(), Konto2.getVærdi());			
 		}
 		
 	}
