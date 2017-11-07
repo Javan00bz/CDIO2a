@@ -41,5 +41,11 @@ public class TestKonto {
 		konto1.hævVærdi(20);
 		assertEquals(980, konto1.getVærdi());
 	}
+	
+	@Test
+	public void testKontoUnderNul() {
+		konto1.hævVærdi(10000);
+		assertEquals(0, konto1.getVærdi());
+	}
 
 }
