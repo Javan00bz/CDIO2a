@@ -24,7 +24,7 @@ public class Spil {
 			GUI.showMessage(StandardBeskeder (2));
 			Spiller2Navn = GUI.getUserString(StandardBeskeder (4));
 		}
-		
+		 
 		Spiller Spiller2 = new Spiller(Spiller2Navn, 6, Konto2 );
 		GUI.addPlayer(Spiller1.getNavn(), Konto1.getVærdi());
 		GUI.addPlayer(Spiller2.getNavn(), Konto2.getVærdi());
