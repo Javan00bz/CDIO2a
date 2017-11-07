@@ -30,6 +30,7 @@ public class TestTerning {
 		for (int i = 0; i < 10000; i++) {
 			if (ter1.rulTerning() < 1 || ter1.rulTerning() > 6){
 			failures++;
+		assertEquals(0, failures);
 			}
 		}
 	}
