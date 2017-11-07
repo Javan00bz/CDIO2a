@@ -6,8 +6,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestKonto {
+import CDIO2.Konto;
 
+public class TestKonto {
+	Konto konto1 = new Konto(1000);
+	
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -18,22 +21,25 @@ public class TestKonto {
 
 	@Test
 	public void testGetVærdi() {
-		fail("Not yet implemented");
+		assertEquals(1000, konto1.getVærdi());
 	}
 
 	@Test
 	public void testSetVærdi() {
-		fail("Not yet implemented");
+		konto1.setVærdi(10);
+		assertEquals(10, konto1.getVærdi());
 	}
 
 	@Test
 	public void testTilføjVærdi() {
-		fail("Not yet implemented");
+		konto1.tilføjVærdi(20);
+		assertEquals(1020, konto1.getVærdi());
 	}
 
 	@Test
 	public void testHævVærdi() {
-		fail("Not yet implemented");
+		konto1.hævVærdi(20);
+		assertEquals(980, konto1.getVærdi());
 	}
 
 }
