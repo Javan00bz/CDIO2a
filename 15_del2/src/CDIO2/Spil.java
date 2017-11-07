@@ -35,6 +35,7 @@ public class Spil {
 				cup.rulRaflebæger();
 				GUI.setDice(cup.getTerninger()[0].getAntalØjne(), cup.getTerninger()[1].getAntalØjne());
 				Spiller1.setPosition(cup.getSum() - 1);
+				GUI.removeAllCars(Spiller1.getNavn());
 				GUI.setCar(Spiller1.getPosition(), Spiller1.getNavn());
 
 				switch (Spiller1.getPosition()) {
@@ -89,6 +90,7 @@ public class Spil {
 				cup.rulRaflebæger();
 				GUI.setDice(cup.getTerninger()[0].getAntalØjne(), cup.getTerninger()[1].getAntalØjne());
 				Spiller2.setPosition(cup.getSum() - 1);
+				GUI.removeAllCars(Spiller2.getNavn());
 				GUI.setCar(Spiller2.getPosition(), Spiller2.getNavn());
 
 				switch (Spiller2.getPosition()) {
@@ -146,8 +148,8 @@ public class Spil {
 			// Navngiv felter der skal bruges
 			for (int i = 0; i < Oversæt.file1().size(); i++) {
 				fields[i] = new Street.Builder()
-						.setTitle(hentFeltOverskrift(i)).setDescription(hentFeltVærdi(i))
-						.setSubText(hentFeltBeskrivelse(i))
+						.setTitle(hentFeltOverskrift(i)).setDescription(hentFeltBeskrivelse(i))
+						.setSubText(hentFeltVærdi(i))
 						.build();
 			}
 			// Lav tomme felter som ikke skal bruges
