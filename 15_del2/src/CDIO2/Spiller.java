@@ -18,7 +18,7 @@ public class Spiller {
 		position = P;
 		this.konto = Konto;
 	}
-	
+	//Konstruktør. Laver en spiller med navn, placering og opretter en ny konto med en givet værdi.
 	public Spiller(String userString, int p, int i) {
 		this.konto = new Konto(i);
 		this.navn = userString;
