@@ -60,12 +60,12 @@ public class TestTerning {
 		assertTrue("Error, random is too low",  148  <= amount6);
 	}
 	
-		
+	@Test	
 	public void TestResponseTid() {
 		long l = System.currentTimeMillis();
 		System.out.println(System.currentTimeMillis());
 		for(int o = 0 ; o<1000;o++) {
-			int actual = ter1.rulTerning();
+			ter1.rulTerning();
 			}
 		long k = System.currentTimeMillis();
 		assertTrue(k-l<333000);
