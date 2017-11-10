@@ -23,18 +23,16 @@ public class Spil {
 		initializeGUI(); //initialiserer GUI
 		GUI.showMessage(StandardBeskeder (0));
 		//Opretter spillere, konti og raflebæger
-		Konto Konto1 = new Konto(1000); //Laver 2 nye konti, begge med en værdi på 1000
-		Konto Konto2 = new Konto(1000);
-		spiller1 = new Spiller(GUI.getUserString(StandardBeskeder (1)), 6, Konto1 );
+		spiller1 = new Spiller(GUI.getUserString(StandardBeskeder (1)), 6, 1000 );
 		String Spiller2Navn = GUI.getUserString(StandardBeskeder (3));
 		while (Spiller2Navn.equals(spiller1.getNavn())) {
 			GUI.showMessage(StandardBeskeder (2));
 			Spiller2Navn = GUI.getUserString(StandardBeskeder (4));
 		}
 
-		spiller2 = new Spiller(Spiller2Navn, 6, Konto2 ); //Laver en ny spiller og knytter den til den anden Konto. Viser en fejlmeddelelse hvis den har samme navn som spiller 1
-		GUI.addPlayer(spiller1.getNavn(), Konto1.getVærdi());
-		GUI.addPlayer(spiller2.getNavn(), Konto2.getVærdi()); //Opretter de to spillere i GUI'en
+		spiller2 = new Spiller(Spiller2Navn, 6, 1000 ); //Laver en ny spiller og knytter den til den anden Konto. Viser en fejlmeddelelse hvis den har samme navn som spiller 1
+		GUI.addPlayer(spiller1.getNavn(), spiller1.getKonto().getVærdi());
+		GUI.addPlayer(spiller2.getNavn(), spiller2.getKonto().getVærdi()); //Opretter de to spillere i GUI'en
 
 
 
@@ -117,34 +115,34 @@ public class Spil {
 
 			//Finder ud af hvor mange point spilleren skal givet eller fratages.
 			switch (CurrentPlayer.getPosition()) {
-			case 1: CurrentPlayer.Konto.tilføjVærdi(250);
+			case 1: CurrentPlayer.getKonto().tilføjVærdi(250);
 			break;
-			case 2: CurrentPlayer.Konto.hævVærdi(100);
+			case 2: CurrentPlayer.getKonto().hævVærdi(100);
 			break;
-			case 3: CurrentPlayer.Konto.tilføjVærdi(100);
+			case 3: CurrentPlayer.getKonto().tilføjVærdi(100);
 			break;
-			case 4: CurrentPlayer.Konto.hævVærdi(20);
+			case 4: CurrentPlayer.getKonto().hævVærdi(20);
 			break;
-			case 5: CurrentPlayer.Konto.tilføjVærdi(180);
+			case 5: CurrentPlayer.getKonto().tilføjVærdi(180);
 			break;
-			case 6: CurrentPlayer.Konto.tilføjVærdi(0);
+			case 6: CurrentPlayer.getKonto().tilføjVærdi(0);
 			break;
-			case 7: CurrentPlayer.Konto.hævVærdi(70);
+			case 7: CurrentPlayer.getKonto().hævVærdi(70);
 			break;
-			case 8: CurrentPlayer.Konto.tilføjVærdi(60);
+			case 8: CurrentPlayer.getKonto().tilføjVærdi(60);
 			break;
-			case 9: CurrentPlayer.Konto.hævVærdi(80);
+			case 9: CurrentPlayer.getKonto().hævVærdi(80);
 			break;
-			case 10: CurrentPlayer.Konto.hævVærdi(50);
+			case 10: CurrentPlayer.getKonto().hævVærdi(50);
 			break;
-			case 11: CurrentPlayer.Konto.tilføjVærdi(650);
+			case 11: CurrentPlayer.getKonto().tilføjVærdi(650);
 			break;
 			default: besked = StandardBeskeder (6);
 			}
 
 			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1); //Læser en besked fra en tekstfil
-			GUI.setBalance(CurrentPlayer.getNavn(), CurrentPlayer.Konto.getVærdi()); //Sætter spillerens balnce
-			if (CurrentPlayer.Konto.getVærdi() >= 3000) //finder ud af om spilleren har vundet
+			GUI.setBalance(CurrentPlayer.getNavn(), CurrentPlayer.getKonto().getVærdi()); //Sætter spillerens balnce
+			if (CurrentPlayer.getKonto().getVærdi() >= 3000) //finder ud af om spilleren har vundet
 				winner = true;
 			if (CurrentPlayer.getPosition() == 9) //Finder ud af om spilleren må slå igen
 				yourturn = true;
@@ -154,7 +152,7 @@ public class Spil {
 	}
 	//Metode for at aflslutte spillet. Finder ud af hvilken spiller der har flest point og spytter en vinderbesked ud
 	private void slutSpil(Spiller FørsteSpiller, Spiller AndenSpiller) {
-		if (FørsteSpiller.Konto.getVærdi() > AndenSpiller.Konto.getVærdi())
+		if (FørsteSpiller.getKonto().getVærdi() > AndenSpiller.getKonto().getVærdi())
 			GUI.showMessage(FørsteSpiller.getNavn() +  StandardBeskeder(7));
 		else GUI.showMessage(AndenSpiller.getNavn() + StandardBeskeder(7));
 	}
