@@ -115,43 +115,33 @@ public class Spil {
 			//Finder ud af hvor mange point spilleren skal givet eller fratages.
 			switch (CurrentPlayer.getPosition()) {
 			case 1: CurrentPlayer.Konto.tilføjVærdi(250);
-			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1);
 			break;
 			case 2: CurrentPlayer.Konto.hævVærdi(100);
-			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1);
 			break;
 			case 3: CurrentPlayer.Konto.tilføjVærdi(100);
-			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1);
 			break;
 			case 4: CurrentPlayer.Konto.hævVærdi(20);
-			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1);
 			break;
 			case 5: CurrentPlayer.Konto.tilføjVærdi(180);
-			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1);
 			break;
 			case 6: CurrentPlayer.Konto.tilføjVærdi(0);
-			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1);
 			break;
 			case 7: CurrentPlayer.Konto.hævVærdi(70);
-			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1);
 			break;
 			case 8: CurrentPlayer.Konto.tilføjVærdi(60);
-			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1);
 			break;
 			case 9: CurrentPlayer.Konto.hævVærdi(80);
-			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1);
 			break;
 			case 10: CurrentPlayer.Konto.hævVærdi(50);
-			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1);
 			break;
 			case 11: CurrentPlayer.Konto.tilføjVærdi(650);
-			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1);
+
 			break;
 			default: besked = StandardBeskeder (6);
 			}
 
 
-
+			besked = hentFeltBeskrivelse(CurrentPlayer.getPosition()-1);
 			GUI.setBalance(CurrentPlayer.getNavn(), CurrentPlayer.Konto.getVærdi());
 			if (CurrentPlayer.Konto.getVærdi() >= 3000)
 				winner = true;
